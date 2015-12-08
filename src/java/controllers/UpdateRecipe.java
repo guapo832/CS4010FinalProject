@@ -93,8 +93,9 @@ public class UpdateRecipe extends HttpServlet {
       //  recipe.setImageFilePath(setImageFilePath(request));
         
         DBHelper.updateRecipe(con, recipe);
-        
-         response.sendRedirect(response.encodeRedirectURL("/servlet/j-yerby/MyRecipes.do"));
+         String sessionid = request.getSession().getId();
+        response.sendRedirect(response.encodeRedirectURL("/servlet/j-yerby/MyRecipes.do;jsessionid=") + sessionid); 
+         
         } catch(Exception ex)
         {
             response.setContentType("text/html");

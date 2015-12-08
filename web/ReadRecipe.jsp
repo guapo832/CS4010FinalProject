@@ -23,7 +23,7 @@
     <aside class="cookTime">
         <h2>
             Total Time<br/>
-            <c:out escapeXml="true" value="${Recipe.cookTime}"></c:out>
+            <c:out escapeXml="true" value="${Recipe.cookTime}"></c:out> minutes
         </h2>
     </aside>    
         

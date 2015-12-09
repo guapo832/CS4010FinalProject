@@ -1,0 +1,46 @@
+ <div>
+            <div>
+                <h2>Create Ingredient</h2>
+                This is the presentation portion of creating an Ingredient.
+                <ol>
+                    <li>When the form is first loaded, the doGet method is called and passes control to this jsp file rendering the form</a>.</li>
+                    <li>When the form is submitted the doPost method is called and the model is updated from the form data and the database is updated.</li>
+                </ol>
+                
+                
+            </div>
+            <div style="overflow:scroll;margin-right:auto;margin-left:auto;width:75%;height:500px">
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">&lt;%-</span><span style="color: #333333">-</span> 
+    Document   <span style="color: #333333">:</span> addRecipe
+    Created on <span style="color: #333333">:</span> Oct <span style="color: #0000DD; font-weight: bold">11</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">2015</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">5</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">37</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">56</span> AM
+    Author     <span style="color: #333333">:</span> gyerby
+<span style="color: #333333">--</span><span style="color: #008800; font-weight: bold">%&gt;</span>
+
+<span style="color: #008800; font-weight: bold">&lt;%@</span>page contentType<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;text/html&quot;</span> pageEncoding<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;UTF-8&quot;</span><span style="color: #008800; font-weight: bold">%&gt;</span>
+
+<span style="color: #008800; font-weight: bold">&lt;jsp:include page=&quot;includes/TopHtml.jsp&quot;&gt;</span>
+    <span style="color: #007700">&lt;jsp:param</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;Title&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;Add Ingredient&quot;</span><span style="color: #007700">&gt;&lt;/jsp:param&gt;</span>
+   <span style="color: #007700">&lt;jsp:param</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;SourcePrefix&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;CreateIngredient&quot;</span><span style="color: #007700">&gt;&lt;/jsp:param&gt;</span>
+<span style="color: #008800; font-weight: bold">&lt;/jsp:include&gt;</span>
+<span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;container-fluid&quot;</span><span style="color: #007700">&gt;</span>
+    
+
+
+
+
+        <span style="color: #007700">&lt;h1&gt;</span>Add new Ingredient<span style="color: #007700">&lt;/h1&gt;</span>
+        <span style="color: #007700">&lt;form</span> <span style="color: #0000CC">action=</span><span style="background-color: #fff0f0">&quot;</span><span style="color: #008800; font-weight: bold">&lt;%=</span> response<span style="color: #333333">.</span><span style="color: #0000CC">encodeRedirectURL</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;createIngredient.do&quot;</span><span style="color: #333333">)</span> <span style="color: #008800; font-weight: bold">%&gt;</span><span style="background-color: #fff0f0">&quot;</span> <span style="color: #0000CC">role=</span><span style="background-color: #fff0f0">&quot;form&quot;</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;form-horizontal&quot;</span> <span style="color: #0000CC">method=</span><span style="background-color: #fff0f0">&quot;POST&quot;</span><span style="color: #007700">&gt;</span>
+          <span style="color: #007700">&lt;input</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;hidden&quot;</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;RecipeID&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;${param[&#39;recipeID&#39;]}&quot;</span><span style="color: #007700">/&gt;</span>
+          <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;form-group&quot;</span><span style="color: #007700">&gt;</span>
+          <span style="color: #007700">&lt;label</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;control-label col-sm-2&quot;</span><span style="color: #007700">&gt;</span>Description: <span style="color: #007700">&lt;/label&gt;</span>
+            <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;col-sm-10&quot;</span><span style="color: #007700">&gt;</span> <span style="color: #007700">&lt;input</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;text&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;&quot;</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;form-control&quot;</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;Description&quot;</span> <span style="color: #0000CC">id=</span><span style="background-color: #fff0f0">&quot;Description&quot;</span><span style="color: #007700">&gt;&lt;br&gt;</span>
+            <span style="color: #007700">&lt;/div&gt;</span> <span style="color: #007700">&lt;/div&gt;</span> 
+                             
+            <span style="color: #007700">&lt;button</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;btn btn-default&quot;</span><span style="color: #007700">&gt;</span>Submit<span style="color: #007700">&lt;/button&gt;</span>
+                     <span style="color: #007700">&lt;/form&gt;</span>
+          
+<span style="color: #007700">&lt;/div&gt;</span>
+<span style="color: #008800; font-weight: bold">&lt;jsp:include page=&quot;includes/BottomHtml.jsp&quot;&gt;&lt;/jsp:include&gt;</span>
+</pre></div>
+
+            </div>

@@ -1,0 +1,69 @@
+ <div>
+            <div>
+                <h2>Read Recipe view</h2>
+                This is the presentation portion of creating an Recipe.
+                <ol>
+                    <li>When the form is first loaded, the doGet method is called and passes control to this jsp file rendering the form</a>.</li>
+                    <li>When the form is submitted the doPost method is called and the model is updated from the form data and the database is updated.</li>
+                </ol>
+                
+                
+            </div>
+            <div style="overflow:scroll;margin-right:auto;margin-left:auto;width:75%;height:500px">
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">&lt;%-</span><span style="color: #333333">-</span> 
+    Document   <span style="color: #333333">:</span> ReadRecipe
+    Created on <span style="color: #333333">:</span> Oct <span style="color: #0000DD; font-weight: bold">11</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">2015</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">7</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">46</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">52</span> AM
+    Author     <span style="color: #333333">:</span> gyerby
+<span style="color: #333333">--</span><span style="color: #008800; font-weight: bold">%&gt;</span>
+
+<span style="color: #008800; font-weight: bold">&lt;%@</span>page contentType<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;text/html&quot;</span> pageEncoding<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;UTF-8&quot;</span><span style="color: #008800; font-weight: bold">%&gt;</span>
+<span style="color: #008800; font-weight: bold">&lt;%@</span> page import<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;java.util.ArrayList&quot;</span> <span style="color: #008800; font-weight: bold">%&gt;</span>
+<span style="color: #008800; font-weight: bold">&lt;%@</span> taglib uri<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> prefix<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;c&quot;</span> <span style="color: #008800; font-weight: bold">%&gt;</span>
+<span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;container&quot;</span><span style="color: #007700">&gt;</span>
+<span style="color: #008800; font-weight: bold">&lt;jsp:include page=&quot;includes/TopHtml.jsp&quot;&gt;</span>
+    <span style="color: #007700">&lt;jsp:param</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;Title&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;${Recipe.title}&quot;</span><span style="color: #007700">&gt;&lt;/jsp:param&gt;</span>
+         <span style="color: #007700">&lt;jsp:param</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;SourcePrefix&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;ReadRecipe&quot;</span><span style="color: #007700">&gt;&lt;/jsp:param&gt;</span>
+<span style="color: #008800; font-weight: bold">&lt;/jsp:include&gt;</span>
+
+        <span style="color: #007700">&lt;h2&gt;</span>${Recipe.title}<span style="color: #007700">&lt;/h2&gt;</span>
+        <span style="color: #007700">&lt;span</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;author&quot;</span><span style="color: #007700">&gt;</span>Recipe Provided By: ${Recipe.author}<span style="color: #007700">&lt;/span&gt;</span>
+        <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">id=</span><span style="background-color: #fff0f0">&quot;recipeDescription&quot;</span><span style="color: #007700">&gt;</span>
+            <span style="color: #007700">&lt;c:out</span> <span style="color: #0000CC">escapeXml=</span><span style="background-color: #fff0f0">&quot;true&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;${Recipe.shortDescription}&quot;</span><span style="color: #007700">&gt;&lt;/c:out&gt;</span>
+        <span style="color: #007700">&lt;/div&gt;</span>
+    <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;recipeImage&quot;</span><span style="color: #007700">&gt;</span>
+        <span style="color: #007700">&lt;img</span> <span style="color: #0000CC">src=</span><span style="background-color: #fff0f0">&quot;${Recipe.imageFilePath}&quot;</span> <span style="color: #0000CC">width=</span><span style="background-color: #fff0f0">&quot;130&quot;</span> <span style="color: #0000CC">style=</span><span style="background-color: #fff0f0">&quot;float:left;margin:4px&quot;</span><span style="color: #007700">/&gt;</span>
+    <span style="color: #007700">&lt;/div&gt;</span>
+    <span style="color: #007700">&lt;aside</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;cookTime&quot;</span><span style="color: #007700">&gt;</span>
+        <span style="color: #007700">&lt;h2&gt;</span>
+            Total Time<span style="color: #007700">&lt;br/&gt;</span>
+            <span style="color: #007700">&lt;c:out</span> <span style="color: #0000CC">escapeXml=</span><span style="background-color: #fff0f0">&quot;true&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;${Recipe.cookTime}&quot;</span><span style="color: #007700">&gt;&lt;/c:out&gt;</span> minutes
+        <span style="color: #007700">&lt;/h2&gt;</span>
+    <span style="color: #007700">&lt;/aside&gt;</span>    
+        
+        <span style="color: #007700">&lt;aside&gt;</span>
+            <span style="color: #007700">&lt;label&gt;</span>Yield:<span style="color: #007700">&lt;/label&gt;&lt;c:out</span> <span style="color: #0000CC">escapeXml=</span><span style="background-color: #fff0f0">&quot;true&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;${Recipe.yield}&quot;</span><span style="color: #007700">&gt;&lt;/c:out&gt;&lt;br/&gt;</span>
+            <span style="color: #007700">&lt;Label&gt;</span>Level:<span style="color: #007700">&lt;/Label&gt;&lt;c:out</span> <span style="color: #0000CC">escapeXml=</span><span style="background-color: #fff0f0">&quot;true&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;${Recipe.skillLevel}&quot;</span><span style="color: #007700">&gt;&lt;/c:out&gt;</span>
+        <span style="color: #007700">&lt;/aside&gt;</span>
+            <span style="color: #007700">&lt;c:if</span> <span style="color: #0000CC">test=</span><span style="background-color: #fff0f0">&quot;${sessionScope.CurrentUser !=null}&quot;</span><span style="color: #007700">&gt;</span>
+                <span style="color: #007700">&lt;a</span> <span style="color: #0000CC">href=</span><span style="background-color: #fff0f0">&quot;/servlet/j-yerby/</span><span style="color: #008800; font-weight: bold">&lt;%=</span> response<span style="color: #333333">.</span><span style="color: #0000CC">encodeRedirectURL</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;createIngredient.do&quot;</span><span style="color: #333333">)</span> <span style="color: #008800; font-weight: bold">%&gt;</span><span style="background-color: #fff0f0">?recipeID=${Recipe.id}&quot;</span><span style="color: #007700">&gt;</span>add ingredient<span style="color: #007700">&lt;/a&gt;</span>
+            <span style="color: #007700">&lt;/c:if&gt;</span>
+    
+        <span style="color: #007700">&lt;ul</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;ingredients&quot;</span><span style="color: #007700">&gt;</span>
+             <span style="color: #007700">&lt;c:forEach</span> <span style="color: #0000CC">var=</span><span style="background-color: #fff0f0">&quot;Ingredient&quot;</span> <span style="color: #0000CC">items=</span><span style="background-color: #fff0f0">&quot;${IngredientsList}&quot;</span><span style="color: #007700">&gt;</span>
+                 <span style="color: #007700">&lt;li&gt;</span>
+                     <span style="color: #007700">&lt;span</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;ingredient&quot;</span><span style="color: #007700">&gt;&lt;c:out</span> <span style="color: #0000CC">escapeXml=</span><span style="background-color: #fff0f0">&quot;true&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;${Ingredient.description}&quot;</span><span style="color: #007700">/&gt;&lt;/span&gt;</span>
+                     <span style="color: #007700">&lt;c:if</span> <span style="color: #0000CC">test=</span><span style="background-color: #fff0f0">&quot;${sessionScope.CurrentUser !=null}&quot;</span><span style="color: #007700">&gt;</span>
+                     <span style="color: #007700">&lt;span</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;admin&quot;</span><span style="color: #007700">&gt;</span>
+                        <span style="color: #007700">&lt;a</span> <span style="color: #0000CC">href=</span><span style="background-color: #fff0f0">&quot;/servlet/j-yerby/</span><span style="color: #008800; font-weight: bold">&lt;%=</span> response<span style="color: #333333">.</span><span style="color: #0000CC">encodeRedirectURL</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;deleteIngredient.do&quot;</span><span style="color: #333333">)</span> <span style="color: #008800; font-weight: bold">%&gt;</span><span style="background-color: #fff0f0">?ID=${Ingredient.id}&amp;recipeID=${Recipe.id}&quot;</span><span style="color: #007700">&gt;</span>delete<span style="color: #007700">&lt;/a&gt;</span><span style="color: #880000; font-weight: bold">&amp;nbsp;</span>|<span style="color: #880000; font-weight: bold">&amp;nbsp;</span><span style="color: #007700">&lt;a</span> <span style="color: #0000CC">href=</span><span style="background-color: #fff0f0">&quot;/servlet/j-yerby/</span><span style="color: #008800; font-weight: bold">&lt;%=</span> response<span style="color: #333333">.</span><span style="color: #0000CC">encodeRedirectURL</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;updateIngredient.do&quot;</span><span style="color: #333333">)</span> <span style="color: #008800; font-weight: bold">%&gt;</span><span style="background-color: #fff0f0">?ID=${Ingredient.id}&amp;recipeID=${Recipe.id}&amp;Source=MyRecipes.do&quot;</span><span style="color: #007700">&gt;</span>edit<span style="color: #007700">&lt;/a&gt;</span>
+                     <span style="color: #007700">&lt;/span&gt;</span>
+                     <span style="color: #007700">&lt;/c:if&gt;</span>
+                 <span style="color: #007700">&lt;/li&gt;</span>
+     <span style="color: #007700">&lt;/c:forEach&gt;</span>
+        <span style="color: #007700">&lt;/ul&gt;</span>
+        <span style="color: #007700">&lt;article&gt;</span>${Recipe.instructions}<span style="color: #007700">&lt;/article&gt;</span>
+            <span style="color: #007700">&lt;p&gt;</span> session ID: <span style="color: #008800; font-weight: bold">&lt;%=</span> request<span style="color: #333333">.</span><span style="color: #0000CC">getSession</span><span style="color: #333333">().</span><span style="color: #0000CC">getId</span><span style="color: #333333">()</span> <span style="color: #008800; font-weight: bold">%&gt;</span> <span style="color: #007700">&lt;/p&gt;</span>
+<span style="color: #007700">&lt;/div&gt;</span>
+            <span style="color: #008800; font-weight: bold">&lt;jsp:include page=&quot;includes/BottomHtml.jsp&quot;&gt;&lt;/jsp:include&gt;</span>
+</pre></div>
+
+            </div>

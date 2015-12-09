@@ -1,0 +1,246 @@
+@startuml
+annotation java.lang.Override
+annotation javax.servlet.annotation.MultipartConfig
+annotation javax.servlet.annotation.WebServlet
+class Utilities.DBHelper
+class Utilities.Encoding
+class Utilities.FileUploadHelper
+class Utilities.Membership
+class com.sun.media.jfxmediaimpl.MediaUtils
+class controllers.CreateIngredient
+class controllers.CreateRecipe
+class controllers.DeleteIngredient
+class controllers.DeleteRecipe
+class controllers.Index
+class controllers.MyRecipes
+class controllers.ReadRecipe
+class controllers.SignOut
+class controllers.SignUp
+class controllers.UpdateIngredient
+class controllers.UpdateRecipe
+class controllers.signin
+class java.io.FileNotFoundException
+class java.io.IOException
+class java.io.InputStream
+class java.io.OutputStream
+class java.io.PrintWriter
+class java.sql.Connection
+class java.sql.DriverManager
+class java.sql.PreparedStatement
+class java.sql.ResultSet
+class java.sql.SQLException
+class java.sql.Statement
+class java.util.ArrayList
+class java.util.HashSet
+class java.util.Set
+class java.util.logging.Level
+class java.util.logging.Logger
+class javax.servlet.RequestDispatcher
+class javax.servlet.ServletContext
+class javax.servlet.ServletContextEvent
+class javax.servlet.ServletException
+class javax.servlet.http.HttpServlet
+class javax.servlet.http.HttpServletRequest
+class javax.servlet.http.HttpServletResponse
+class javax.servlet.http.HttpSession
+class javax.servlet.http.Part
+class listeners.myServletListener
+class models.Ingredient
+class models.Recipe
+class models.User
+class servlet1
+interface java.io.Serializable
+interface javax.servlet.ServletContextListener
+Utilities.DBHelper ..> controllers.Index
+Utilities.DBHelper ..> java.sql.Connection
+Utilities.DBHelper ..> java.sql.PreparedStatement
+Utilities.DBHelper ..> java.sql.ResultSet
+Utilities.DBHelper ..> java.sql.SQLException
+Utilities.DBHelper ..> java.sql.Statement
+Utilities.DBHelper ..> java.util.ArrayList
+Utilities.DBHelper ..> java.util.HashSet
+Utilities.DBHelper ..> java.util.Set
+Utilities.DBHelper ..> java.util.logging.Level
+Utilities.DBHelper ..> java.util.logging.Logger
+Utilities.DBHelper ..> models.Ingredient
+Utilities.DBHelper ..> models.Recipe
+Utilities.DBHelper ..> models.User
+Utilities.FileUploadHelper ..> controllers.Index
+Utilities.FileUploadHelper ..> java.io.FileNotFoundException
+Utilities.FileUploadHelper ..> java.io.InputStream
+Utilities.FileUploadHelper ..> java.io.OutputStream
+Utilities.FileUploadHelper ..> java.util.logging.Level
+Utilities.FileUploadHelper ..> java.util.logging.Logger
+Utilities.FileUploadHelper ..> javax.servlet.ServletContext
+Utilities.FileUploadHelper ..> javax.servlet.ServletException
+Utilities.FileUploadHelper ..> javax.servlet.http.HttpServletRequest
+Utilities.FileUploadHelper ..> javax.servlet.http.Part
+Utilities.Membership ..> javax.servlet.http.HttpSession
+Utilities.Membership ..> models.User
+controllers.CreateIngredient ..> java.lang.Override
+controllers.CreateIngredient ..> Utilities.DBHelper
+controllers.CreateIngredient ..> java.io.IOException
+controllers.CreateIngredient ..> java.sql.Connection
+controllers.CreateIngredient ..> java.sql.SQLException
+controllers.CreateIngredient ..> java.util.logging.Level
+controllers.CreateIngredient ..> java.util.logging.Logger
+controllers.CreateIngredient ..> javax.servlet.RequestDispatcher
+controllers.CreateIngredient ..> javax.servlet.ServletException
+controllers.CreateIngredient --|> javax.servlet.http.HttpServlet
+controllers.CreateIngredient ..> javax.servlet.http.HttpServletRequest
+controllers.CreateIngredient ..> javax.servlet.http.HttpServletResponse
+controllers.CreateIngredient ..> models.Ingredient
+controllers.CreateRecipe ..> java.lang.Override
+controllers.CreateRecipe ..> javax.servlet.annotation.MultipartConfig
+controllers.CreateRecipe ..> javax.servlet.annotation.WebServlet
+controllers.CreateRecipe ..> Utilities.DBHelper
+controllers.CreateRecipe ..> Utilities.FileUploadHelper
+controllers.CreateRecipe ..> java.io.IOException
+controllers.CreateRecipe ..> java.io.PrintWriter
+controllers.CreateRecipe ..> java.sql.Connection
+controllers.CreateRecipe ..> java.sql.SQLException
+controllers.CreateRecipe ..> javax.servlet.RequestDispatcher
+controllers.CreateRecipe ..> javax.servlet.ServletContext
+controllers.CreateRecipe ..> javax.servlet.ServletException
+controllers.CreateRecipe --|> javax.servlet.http.HttpServlet
+controllers.CreateRecipe ..> javax.servlet.http.HttpServletRequest
+controllers.CreateRecipe ..> javax.servlet.http.HttpServletResponse
+controllers.CreateRecipe ..> javax.servlet.http.Part
+controllers.CreateRecipe ..> models.Recipe
+controllers.CreateRecipe ..> models.User
+controllers.DeleteIngredient ..> java.lang.Override
+controllers.DeleteIngredient ..> Utilities.DBHelper
+controllers.DeleteIngredient ..> java.io.IOException
+controllers.DeleteIngredient ..> java.io.PrintWriter
+controllers.DeleteIngredient ..> java.sql.Connection
+controllers.DeleteIngredient ..> javax.servlet.ServletException
+controllers.DeleteIngredient --|> javax.servlet.http.HttpServlet
+controllers.DeleteIngredient ..> javax.servlet.http.HttpServletRequest
+controllers.DeleteIngredient ..> javax.servlet.http.HttpServletResponse
+controllers.DeleteRecipe ..> java.lang.Override
+controllers.DeleteRecipe ..> javax.servlet.annotation.WebServlet
+controllers.DeleteRecipe ..> Utilities.DBHelper
+controllers.DeleteRecipe ..> java.io.IOException
+controllers.DeleteRecipe ..> java.sql.Connection
+controllers.DeleteRecipe ..> javax.servlet.ServletException
+controllers.DeleteRecipe --|> javax.servlet.http.HttpServlet
+controllers.DeleteRecipe ..> javax.servlet.http.HttpServletRequest
+controllers.DeleteRecipe ..> javax.servlet.http.HttpServletResponse
+controllers.Index ..> java.lang.Override
+controllers.Index ..> java.io.IOException
+controllers.Index ..> java.io.PrintWriter
+controllers.Index ..> java.sql.Connection
+controllers.Index ..> java.sql.SQLException
+controllers.Index ..> java.util.ArrayList
+controllers.Index ..> javax.servlet.RequestDispatcher
+controllers.Index ..> javax.servlet.ServletException
+controllers.Index --|> javax.servlet.http.HttpServlet
+controllers.Index ..> javax.servlet.http.HttpServletRequest
+controllers.Index ..> javax.servlet.http.HttpServletResponse
+controllers.Index ..> models.Recipe
+controllers.Index ..> models.User
+controllers.MyRecipes ..> java.lang.Override
+controllers.MyRecipes ..> java.io.IOException
+controllers.MyRecipes ..> java.io.PrintWriter
+controllers.MyRecipes ..> java.sql.Connection
+controllers.MyRecipes ..> java.sql.SQLException
+controllers.MyRecipes ..> java.util.ArrayList
+controllers.MyRecipes ..> javax.servlet.RequestDispatcher
+controllers.MyRecipes ..> javax.servlet.ServletException
+controllers.MyRecipes --|> javax.servlet.http.HttpServlet
+controllers.MyRecipes ..> javax.servlet.http.HttpServletRequest
+controllers.MyRecipes ..> javax.servlet.http.HttpServletResponse
+controllers.MyRecipes ..> javax.servlet.http.HttpSession
+controllers.MyRecipes ..> models.Recipe
+controllers.MyRecipes ..> models.User
+controllers.ReadRecipe ..> java.lang.Override
+controllers.ReadRecipe ..> Utilities.DBHelper
+controllers.ReadRecipe ..> java.io.IOException
+controllers.ReadRecipe ..> java.sql.Connection
+controllers.ReadRecipe ..> java.util.ArrayList
+controllers.ReadRecipe ..> javax.servlet.RequestDispatcher
+controllers.ReadRecipe ..> javax.servlet.ServletException
+controllers.ReadRecipe --|> javax.servlet.http.HttpServlet
+controllers.ReadRecipe ..> javax.servlet.http.HttpServletRequest
+controllers.ReadRecipe ..> javax.servlet.http.HttpServletResponse
+controllers.ReadRecipe ..> models.Ingredient
+controllers.ReadRecipe ..> models.Recipe
+controllers.ReadRecipe ..> models.User
+controllers.SignOut ..> java.lang.Override
+controllers.SignOut ..> java.io.IOException
+controllers.SignOut ..> java.io.PrintWriter
+controllers.SignOut ..> javax.servlet.ServletException
+controllers.SignOut --|> javax.servlet.http.HttpServlet
+controllers.SignOut ..> javax.servlet.http.HttpServletRequest
+controllers.SignOut ..> javax.servlet.http.HttpServletResponse
+controllers.SignOut ..> models.User
+controllers.SignUp ..> java.lang.Override
+controllers.SignUp ..> Utilities.DBHelper
+controllers.SignUp ..> com.sun.media.jfxmediaimpl.MediaUtils
+controllers.SignUp ..> java.io.IOException
+controllers.SignUp ..> java.io.PrintWriter
+controllers.SignUp ..> java.sql.Connection
+controllers.SignUp ..> java.sql.SQLException
+controllers.SignUp ..> java.util.HashSet
+controllers.SignUp ..> java.util.Set
+controllers.SignUp ..> java.util.logging.Level
+controllers.SignUp ..> java.util.logging.Logger
+controllers.SignUp ..> javax.servlet.RequestDispatcher
+controllers.SignUp ..> javax.servlet.ServletException
+controllers.SignUp --|> javax.servlet.http.HttpServlet
+controllers.SignUp ..> javax.servlet.http.HttpServletRequest
+controllers.SignUp ..> javax.servlet.http.HttpServletResponse
+controllers.SignUp ..> models.User
+controllers.UpdateIngredient ..> java.lang.Override
+controllers.UpdateIngredient ..> javax.servlet.annotation.WebServlet
+controllers.UpdateIngredient ..> Utilities.DBHelper
+controllers.UpdateIngredient ..> java.io.IOException
+controllers.UpdateIngredient ..> java.io.PrintWriter
+controllers.UpdateIngredient ..> java.sql.Connection
+controllers.UpdateIngredient ..> java.util.HashSet
+controllers.UpdateIngredient ..> javax.servlet.RequestDispatcher
+controllers.UpdateIngredient ..> javax.servlet.ServletException
+controllers.UpdateIngredient --|> javax.servlet.http.HttpServlet
+controllers.UpdateIngredient ..> javax.servlet.http.HttpServletRequest
+controllers.UpdateIngredient ..> javax.servlet.http.HttpServletResponse
+controllers.UpdateIngredient ..> models.Ingredient
+controllers.UpdateIngredient ..> models.Recipe
+controllers.UpdateRecipe ..> java.lang.Override
+controllers.UpdateRecipe ..> javax.servlet.annotation.WebServlet
+controllers.UpdateRecipe ..> Utilities.DBHelper
+controllers.UpdateRecipe ..> java.io.IOException
+controllers.UpdateRecipe ..> java.sql.Connection
+controllers.UpdateRecipe ..> javax.servlet.RequestDispatcher
+controllers.UpdateRecipe ..> javax.servlet.ServletException
+controllers.UpdateRecipe --|> javax.servlet.http.HttpServlet
+controllers.UpdateRecipe ..> javax.servlet.http.HttpServletRequest
+controllers.UpdateRecipe ..> javax.servlet.http.HttpServletResponse
+controllers.UpdateRecipe ..> models.Recipe
+controllers.UpdateRecipe ..> models.User
+controllers.signin ..> java.lang.Override
+controllers.signin ..> java.io.IOException
+controllers.signin ..> java.sql.Connection
+controllers.signin ..> javax.servlet.RequestDispatcher
+controllers.signin ..> javax.servlet.ServletException
+controllers.signin --|> javax.servlet.http.HttpServlet
+controllers.signin ..> javax.servlet.http.HttpServletRequest
+controllers.signin ..> javax.servlet.http.HttpServletResponse
+controllers.signin ..> javax.servlet.http.HttpSession
+controllers.signin ..> models.User
+listeners.myServletListener ..> java.lang.Override
+listeners.myServletListener ..> java.sql.Connection
+listeners.myServletListener ..> java.sql.DriverManager
+listeners.myServletListener ..> java.sql.SQLException
+listeners.myServletListener ..> java.util.logging.Level
+listeners.myServletListener ..> java.util.logging.Logger
+listeners.myServletListener ..> javax.servlet.ServletContext
+listeners.myServletListener ..> javax.servlet.ServletContextEvent
+listeners.myServletListener --|> javax.servlet.ServletContextListener
+models.Ingredient ..> java.util.ArrayList
+models.Recipe ..> Utilities.Encoding
+models.User --|> java.io.Serializable
+servlet1 ..> javax.servlet.ServletException
+servlet1 --|> javax.servlet.http.HttpServlet
+servlet1 ..> javax.servlet.http.HttpServletRequest
+servlet1 ..> javax.servlet.http.HttpServletResponse
+@enduml

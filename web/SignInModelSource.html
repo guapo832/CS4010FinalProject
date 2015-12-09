@@ -1,0 +1,77 @@
+ <div>
+            <div>
+                <h2>Create Ingredient</h2>
+                This code stores the business logic. (Bean)
+                <p>When the create form submit button is clicked the form data is posted to the controller. The controller builds an ingredient object using this class. that data is then stored to the database.</p>
+                
+                
+            </div>
+            <div style="overflow:scroll;margin-right:auto;margin-left:auto;width:75%;height:500px">
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">/*</span>
+<span style="color: #888888"> * To change this license header, choose License Headers in Project Properties.</span>
+<span style="color: #888888"> * To change this template file, choose Tools | Templates</span>
+<span style="color: #888888"> * and open the template in the editor.</span>
+<span style="color: #888888"> */</span>
+<span style="color: #008800; font-weight: bold">package</span> models<span style="color: #333333">;</span>
+
+<span style="color: #888888">/**</span>
+<span style="color: #888888"> *</span>
+<span style="color: #888888"> * @author gyerby</span>
+<span style="color: #888888"> */</span>
+<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">User</span> <span style="color: #008800; font-weight: bold">implements</span> java<span style="color: #333333">.</span><span style="color: #0000CC">io</span><span style="color: #333333">.</span><span style="color: #0000CC">Serializable</span>  <span style="color: #333333">{</span>
+    
+    <span style="color: #008800; font-weight: bold">private</span> String username<span style="color: #333333">;</span>
+    <span style="color: #008800; font-weight: bold">private</span> String password<span style="color: #333333">;</span>
+    <span style="color: #008800; font-weight: bold">private</span> <span style="color: #333399; font-weight: bold">int</span> userid<span style="color: #333333">;</span>
+    
+    <span style="color: #888888">/**</span>
+<span style="color: #888888">     *</span>
+<span style="color: #888888">     * @return</span>
+<span style="color: #888888">     */</span>
+    <span style="color: #008800; font-weight: bold">public</span> String <span style="color: #0066BB; font-weight: bold">getUsername</span><span style="color: #333333">(){</span>
+        <span style="color: #008800; font-weight: bold">return</span> username<span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+    
+    <span style="color: #888888">/**</span>
+<span style="color: #888888">     *</span>
+<span style="color: #888888">     * @return</span>
+<span style="color: #888888">     */</span>
+    <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">getUserid</span><span style="color: #333333">(){</span>
+        <span style="color: #008800; font-weight: bold">return</span> userid<span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+
+    <span style="color: #888888">/**</span>
+<span style="color: #888888">     *</span>
+<span style="color: #888888">     * @param value</span>
+<span style="color: #888888">     */</span>
+    <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setUserid</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> value<span style="color: #333333">){</span>
+        <span style="color: #008800; font-weight: bold">this</span><span style="color: #333333">.</span><span style="color: #0000CC">userid</span> <span style="color: #333333">=</span> value<span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+    
+    <span style="color: #888888">/**</span>
+<span style="color: #888888">     *</span>
+<span style="color: #888888">     * @param value</span>
+<span style="color: #888888">     */</span>
+    <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setUsername</span><span style="color: #333333">(</span>String value<span style="color: #333333">){</span>
+        username <span style="color: #333333">=</span> value<span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+
+    <span style="color: #888888">/**</span>
+<span style="color: #888888">     *</span>
+<span style="color: #888888">     * @return</span>
+<span style="color: #888888">     */</span>
+    <span style="color: #008800; font-weight: bold">public</span> String <span style="color: #0066BB; font-weight: bold">getPassword</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">this</span><span style="color: #333333">.</span><span style="color: #0000CC">password</span><span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+
+    <span style="color: #888888">/**</span>
+<span style="color: #888888">     *</span>
+<span style="color: #888888">     * @param password</span>
+<span style="color: #888888">     */</span>
+    <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setPassword</span><span style="color: #333333">(</span>String password<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+        <span style="color: #008800; font-weight: bold">this</span><span style="color: #333333">.</span><span style="color: #0000CC">password</span> <span style="color: #333333">=</span> password<span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></div>
+
+            </div>

@@ -1,0 +1,118 @@
+
+        <div>
+            <div>
+                <h2>Recipe Home Page Source Code</h2>
+                <p>This page shows a list of all recipes submitted. It also. It works using the following Model View Controller Design Pattern.
+                <ol>
+                    <li>Controller Builds a list of Recipe Objects stored in Database. </li>
+                    <li>Model is the list of Recipe Objects
+                    <li>controller passes Model to the view</li>
+                    <li>the view is the Index.jsp file.</li>
+                </ol>
+                
+                
+            </div>
+            <div style="overflow:scroll;margin-right:auto;margin-left:auto;width:75%;height:500px">
+   <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">/*</span>
+<span style="color: #888888"> * To change this license header, choose License Headers in Project Properties.</span>
+<span style="color: #888888"> * To change this template file, choose Tools | Templates</span>
+<span style="color: #888888"> * and open the template in the editor.</span>
+<span style="color: #888888"> */</span>
+<span style="color: #008800; font-weight: bold">package</span> controllers<span style="color: #333333">;</span>
+
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.io.IOException</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.io.PrintWriter</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.sql.Connection</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.sql.SQLException</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.util.ArrayList</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">javax.servlet.RequestDispatcher</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">javax.servlet.ServletException</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">javax.servlet.http.HttpServlet</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">javax.servlet.http.HttpServletRequest</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">javax.servlet.http.HttpServletResponse</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">models.Recipe</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">models.User</span><span style="color: #333333">;</span>
+
+<span style="color: #888888">/**</span>
+<span style="color: #888888"> *</span>
+<span style="color: #888888"> * @author gyerby</span>
+<span style="color: #888888"> */</span>
+<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Index</span> <span style="color: #008800; font-weight: bold">extends</span> HttpServlet <span style="color: #333333">{</span>
+
+    <span style="color: #888888">/**</span>
+<span style="color: #888888">     * Processes requests for both HTTP &lt;code&gt;GET&lt;/code&gt; and &lt;code&gt;POST&lt;/code&gt;</span>
+<span style="color: #888888">     * methods.</span>
+<span style="color: #888888">     *</span>
+<span style="color: #888888">     * @param request servlet request</span>
+<span style="color: #888888">     * @param response servlet response</span>
+<span style="color: #888888">     * @throws ServletException if a servlet-specific error occurs</span>
+<span style="color: #888888">     * @throws IOException if an I/O error occurs</span>
+<span style="color: #888888">     */</span>
+    <span style="color: #008800; font-weight: bold">protected</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">processRequest</span><span style="color: #333333">(</span>HttpServletRequest request<span style="color: #333333">,</span> HttpServletResponse response<span style="color: #333333">)</span>
+            <span style="color: #008800; font-weight: bold">throws</span> ServletException<span style="color: #333333">,</span> IOException <span style="color: #333333">{</span>
+        Connection con <span style="color: #333333">=</span> <span style="color: #333333">(</span>Connection<span style="color: #333333">)</span> getServletContext<span style="color: #333333">().</span><span style="color: #0000CC">getAttribute</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;dbCon&quot;</span><span style="color: #333333">);</span>
+       
+           
+          <span style="color: #008800; font-weight: bold">try</span><span style="color: #333333">{</span>
+            ArrayList<span style="color: #333333">&lt;</span>Recipe<span style="color: #333333">&gt;</span> recipeList <span style="color: #333333">=</span>  Utilities<span style="color: #333333">.</span><span style="color: #0000CC">DBHelper</span><span style="color: #333333">.</span><span style="color: #0000CC">readRecipeList</span><span style="color: #333333">(</span>con<span style="color: #333333">);</span>
+                        
+            
+        <span style="color: #888888">//Object tmplist = request.getAttribute(&quot;Index&quot;);</span>
+        <span style="color: #888888">//if(tmplist !=null)</span>
+   <span style="color: #888888">//   request.removeAttribute(&quot;Index&quot;);</span>
+        request<span style="color: #333333">.</span><span style="color: #0000CC">setAttribute</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;RecipeList&quot;</span><span style="color: #333333">,</span> recipeList<span style="color: #333333">);</span>
+        RequestDispatcher view <span style="color: #333333">=</span> request<span style="color: #333333">.</span><span style="color: #0000CC">getRequestDispatcher</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;index.jsp&quot;</span><span style="color: #333333">);</span>
+        view<span style="color: #333333">.</span><span style="color: #0000CC">forward</span><span style="color: #333333">(</span>request<span style="color: #333333">,</span> response<span style="color: #333333">);</span>
+        <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">catch</span><span style="color: #333333">(</span>SQLException ex<span style="color: #333333">){</span>
+           PrintWriter writer <span style="color: #333333">=</span> response<span style="color: #333333">.</span><span style="color: #0000CC">getWriter</span><span style="color: #333333">();</span>
+           ex<span style="color: #333333">.</span><span style="color: #0000CC">printStackTrace</span><span style="color: #333333">(</span>writer<span style="color: #333333">);</span>
+           <span style="color: #008800; font-weight: bold">return</span><span style="color: #333333">;</span>
+        <span style="color: #333333">}</span>
+        
+    <span style="color: #333333">}</span>
+
+    <span style="color: #888888">// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;HttpServlet methods. Click on the + sign on the left to edit the code.&quot;&gt;</span>
+    <span style="color: #888888">/**</span>
+<span style="color: #888888">     * Handles the HTTP &lt;code&gt;GET&lt;/code&gt; method.</span>
+<span style="color: #888888">     *</span>
+<span style="color: #888888">     * @param request servlet request</span>
+<span style="color: #888888">     * @param response servlet response</span>
+<span style="color: #888888">     * @throws ServletException if a servlet-specific error occurs</span>
+<span style="color: #888888">     * @throws IOException if an I/O error occurs</span>
+<span style="color: #888888">     */</span>
+    <span style="color: #555555; font-weight: bold">@Override</span>
+    <span style="color: #008800; font-weight: bold">protected</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">doGet</span><span style="color: #333333">(</span>HttpServletRequest request<span style="color: #333333">,</span> HttpServletResponse response<span style="color: #333333">)</span>
+            <span style="color: #008800; font-weight: bold">throws</span> ServletException<span style="color: #333333">,</span> IOException <span style="color: #333333">{</span>
+        processRequest<span style="color: #333333">(</span>request<span style="color: #333333">,</span> response<span style="color: #333333">);</span>
+    <span style="color: #333333">}</span>
+
+    <span style="color: #888888">/**</span>
+<span style="color: #888888">     * Handles the HTTP &lt;code&gt;POST&lt;/code&gt; method.</span>
+<span style="color: #888888">     *</span>
+<span style="color: #888888">     * @param request servlet request</span>
+<span style="color: #888888">     * @param response servlet response</span>
+<span style="color: #888888">     * @throws ServletException if a servlet-specific error occurs</span>
+<span style="color: #888888">     * @throws IOException if an I/O error occurs</span>
+<span style="color: #888888">     */</span>
+    <span style="color: #555555; font-weight: bold">@Override</span>
+    <span style="color: #008800; font-weight: bold">protected</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">doPost</span><span style="color: #333333">(</span>HttpServletRequest request<span style="color: #333333">,</span> HttpServletResponse response<span style="color: #333333">)</span>
+            <span style="color: #008800; font-weight: bold">throws</span> ServletException<span style="color: #333333">,</span> IOException <span style="color: #333333">{</span>
+        processRequest<span style="color: #333333">(</span>request<span style="color: #333333">,</span> response<span style="color: #333333">);</span>
+    <span style="color: #333333">}</span>
+
+    <span style="color: #888888">/**</span>
+<span style="color: #888888">     * Returns a short description of the servlet.</span>
+<span style="color: #888888">     *</span>
+<span style="color: #888888">     * @return a String containing servlet description</span>
+<span style="color: #888888">     */</span>
+    <span style="color: #555555; font-weight: bold">@Override</span>
+    <span style="color: #008800; font-weight: bold">public</span> String <span style="color: #0066BB; font-weight: bold">getServletInfo</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+        <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&quot;Short description&quot;</span><span style="color: #333333">;</span>
+    <span style="color: #333333">}</span><span style="color: #888888">// &lt;/editor-fold&gt;</span>
+
+<span style="color: #333333">}</span>
+</pre></div>
+
+
+        </div>
+ 

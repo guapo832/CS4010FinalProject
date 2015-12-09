@@ -8,7 +8,14 @@
 
 <jsp:include page="includes/TopHtml.jsp">
     <jsp:param name="Title" value="Add Ingredient"></jsp:param>
+   <jsp:param name="SourcePrefix" value="CreateIngredient"></jsp:param>
 </jsp:include>
+<div class="container-fluid">
+    
+
+
+
+
         <h1>Add new Ingredient</h1>
         <form action="<%= response.encodeRedirectURL("createIngredient.do") %>" role="form" class="form-horizontal" method="POST">
           <input type="hidden" name="RecipeID" value="${param['recipeID']}"/>
@@ -19,4 +26,6 @@
                              
             <button class="btn btn-default">Submit</button>
                      </form>
-      <jsp:include page="includes/BottomHtml.jsp"></jsp:include>
+          
+</div>
+<jsp:include page="includes/BottomHtml.jsp"></jsp:include>

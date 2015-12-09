@@ -1,0 +1,130 @@
+
+        <div>
+            <div>
+                <h2>Create Ingredient</h2>
+                This code serves 2 purposes. 
+                <ol>
+                    <li>When the form is first loaded, the doGet method is called and passes control to the <a href="CreateIngredientViewSource.html">View</a>.</li>
+                    <li>When the form is submitted the doPost method is called and the model is updated from the form data and the database is updated.</li>
+                </ol>
+                
+                
+            </div>
+            <div style="overflow:scroll;margin-right:auto;margin-left:auto;width:75%;height:500px">
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">/*</span>
+<span style="color: #888888"> * To change this license header, choose License Headers in Project Properties.</span>
+<span style="color: #888888"> * To change this template file, choose Tools | Templates</span>
+<span style="color: #888888"> * and open the template in the editor.</span>
+<span style="color: #888888"> */</span>
+<span style="color: #008800; font-weight: bold">package</span> controllers<span style="color: #333333">;</span>
+
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">Utilities.DBHelper</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">static</span> com<span style="color: #333333">.</span><span style="color: #0000CC">sun</span><span style="color: #333333">.</span><span style="color: #0000CC">media</span><span style="color: #333333">.</span><span style="color: #0000CC">jfxmediaimpl</span><span style="color: #333333">.</span><span style="color: #0000CC">MediaUtils</span><span style="color: #333333">.</span><span style="color: #0000CC">error</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.io.IOException</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.io.PrintWriter</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.sql.Connection</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.sql.SQLException</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.util.HashSet</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.util.Set</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.util.logging.Level</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.util.logging.Logger</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">javax.servlet.RequestDispatcher</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">javax.servlet.ServletException</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">javax.servlet.http.HttpServlet</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">javax.servlet.http.HttpServletRequest</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">javax.servlet.http.HttpServletResponse</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">models.User</span><span style="color: #333333">;</span>
+
+<span style="color: #888888">/**</span>
+<span style="color: #888888"> *</span>
+<span style="color: #888888"> * @author gyerby</span>
+<span style="color: #888888"> */</span>
+<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">SignUp</span> <span style="color: #008800; font-weight: bold">extends</span> HttpServlet <span style="color: #333333">{</span>
+
+    <span style="color: #888888">/**</span>
+<span style="color: #888888">     * Processes requests for both HTTP &lt;code&gt;GET&lt;/code&gt; and &lt;code&gt;POST&lt;/code&gt;</span>
+<span style="color: #888888">     * methods.</span>
+<span style="color: #888888">     *</span>
+<span style="color: #888888">     * @param request servlet request</span>
+<span style="color: #888888">     * @param response servlet response</span>
+<span style="color: #888888">     * @throws ServletException if a servlet-specific error occurs</span>
+<span style="color: #888888">     * @throws IOException if an I/O error occurs</span>
+<span style="color: #888888">     */</span>
+    
+
+    <span style="color: #888888">// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;HttpServlet methods. Click on the + sign on the left to edit the code.&quot;&gt;</span>
+    <span style="color: #888888">/**</span>
+<span style="color: #888888">     * Handles the HTTP &lt;code&gt;GET&lt;/code&gt; method.</span>
+<span style="color: #888888">     *</span>
+<span style="color: #888888">     * @param request servlet request</span>
+<span style="color: #888888">     * @param response servlet response</span>
+<span style="color: #888888">     * @throws ServletException if a servlet-specific error occurs</span>
+<span style="color: #888888">     * @throws IOException if an I/O error occurs</span>
+<span style="color: #888888">     */</span>
+    <span style="color: #555555; font-weight: bold">@Override</span>
+    <span style="color: #008800; font-weight: bold">protected</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">doGet</span><span style="color: #333333">(</span>HttpServletRequest request<span style="color: #333333">,</span> HttpServletResponse response<span style="color: #333333">)</span>
+            <span style="color: #008800; font-weight: bold">throws</span> ServletException<span style="color: #333333">,</span> IOException <span style="color: #333333">{</span> 
+        RequestDispatcher dispatcher <span style="color: #333333">=</span> request<span style="color: #333333">.</span><span style="color: #0000CC">getRequestDispatcher</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;signup.jsp&quot;</span><span style="color: #333333">);</span>
+        dispatcher<span style="color: #333333">.</span><span style="color: #0000CC">forward</span><span style="color: #333333">(</span>request<span style="color: #333333">,</span> response<span style="color: #333333">);</span>
+    <span style="color: #333333">}</span>
+
+    <span style="color: #888888">/**</span>
+<span style="color: #888888">     * Handles the HTTP &lt;code&gt;POST&lt;/code&gt; method.</span>
+<span style="color: #888888">     *</span>
+<span style="color: #888888">     * @param request servlet request</span>
+<span style="color: #888888">     * @param response servlet response</span>
+<span style="color: #888888">     * @throws ServletException if a servlet-specific error occurs</span>
+<span style="color: #888888">     * @throws IOException if an I/O error occurs</span>
+<span style="color: #888888">     */</span>
+    <span style="color: #555555; font-weight: bold">@Override</span>
+    <span style="color: #008800; font-weight: bold">protected</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">doPost</span><span style="color: #333333">(</span>HttpServletRequest request<span style="color: #333333">,</span> HttpServletResponse response<span style="color: #333333">)</span>
+            <span style="color: #008800; font-weight: bold">throws</span> ServletException<span style="color: #333333">,</span> IOException <span style="color: #333333">{</span>
+        String username <span style="color: #333333">=</span> request<span style="color: #333333">.</span><span style="color: #0000CC">getParameter</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Username&quot;</span><span style="color: #333333">);</span>
+        String password <span style="color: #333333">=</span> request<span style="color: #333333">.</span><span style="color: #0000CC">getParameter</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Password&quot;</span><span style="color: #333333">);</span>
+        Connection con <span style="color: #333333">=</span> <span style="color: #333333">(</span>Connection<span style="color: #333333">)</span> getServletContext<span style="color: #333333">().</span><span style="color: #0000CC">getAttribute</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;dbCon&quot;</span><span style="color: #333333">);</span>
+        User user <span style="color: #333333">=</span> DBHelper<span style="color: #333333">.</span><span style="color: #0000CC">getUser</span><span style="color: #333333">(</span>con<span style="color: #333333">,</span> username<span style="color: #333333">,</span> password<span style="color: #333333">);</span>
+        RequestDispatcher dispatcher <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">;</span>
+        String error <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">;</span>
+        request<span style="color: #333333">.</span><span style="color: #0000CC">setAttribute</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Error&quot;</span><span style="color: #333333">,</span>error<span style="color: #333333">);</span>
+        <span style="color: #008800; font-weight: bold">if</span><span style="color: #333333">(</span>user <span style="color: #333333">!=</span> <span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">)</span>
+        <span style="color: #333333">{</span>
+            error<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;This username is already in use. Please try again&quot;</span><span style="color: #333333">;</span>
+            request<span style="color: #333333">.</span><span style="color: #0000CC">setAttribute</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Error&quot;</span><span style="color: #333333">,</span>error<span style="color: #333333">);</span>
+            dispatcher <span style="color: #333333">=</span> request<span style="color: #333333">.</span><span style="color: #0000CC">getRequestDispatcher</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;signup.jsp&quot;</span><span style="color: #333333">);</span>
+            dispatcher<span style="color: #333333">.</span><span style="color: #0000CC">forward</span><span style="color: #333333">(</span>request<span style="color: #333333">,</span> response<span style="color: #333333">);</span>
+        <span style="color: #333333">}</span>
+        <span style="color: #008800; font-weight: bold">else</span> 
+        <span style="color: #333333">{</span>
+           
+            <span style="color: #008800; font-weight: bold">try</span> <span style="color: #333333">{</span>
+                user <span style="color: #333333">=</span> DBHelper<span style="color: #333333">.</span><span style="color: #0000CC">createUser</span><span style="color: #333333">(</span>con<span style="color: #333333">,</span> username<span style="color: #333333">,</span> password<span style="color: #333333">);</span>
+                 request<span style="color: #333333">.</span><span style="color: #0000CC">getSession</span><span style="color: #333333">().</span><span style="color: #0000CC">setAttribute</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;CurrentUser&quot;</span><span style="color: #333333">,</span> user<span style="color: #333333">);</span>
+                 dispatcher <span style="color: #333333">=</span> request<span style="color: #333333">.</span><span style="color: #0000CC">getRequestDispatcher</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;MyRecipes.do&quot;</span><span style="color: #333333">);</span>
+            <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">catch</span> <span style="color: #333333">(</span>SQLException ex<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+                Logger<span style="color: #333333">.</span><span style="color: #0000CC">getLogger</span><span style="color: #333333">(</span>SignUp<span style="color: #333333">.</span><span style="color: #0000CC">class</span><span style="color: #333333">.</span><span style="color: #0000CC">getName</span><span style="color: #333333">()).</span><span style="color: #0000CC">log</span><span style="color: #333333">(</span>Level<span style="color: #333333">.</span><span style="color: #0000CC">SEVERE</span><span style="color: #333333">,</span> <span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">,</span> ex<span style="color: #333333">);</span>
+                error<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;An Error Occurred please try again later.&quot;</span> <span style="color: #333333">+</span> ex<span style="color: #333333">.</span><span style="color: #0000CC">toString</span><span style="color: #333333">();</span>
+                request<span style="color: #333333">.</span><span style="color: #0000CC">setAttribute</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Error&quot;</span><span style="color: #333333">,</span>error<span style="color: #333333">);</span>
+                dispatcher <span style="color: #333333">=</span> request<span style="color: #333333">.</span><span style="color: #0000CC">getRequestDispatcher</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;signup.jsp&quot;</span><span style="color: #333333">);</span>
+                
+            <span style="color: #333333">}</span>
+            
+            
+            dispatcher<span style="color: #333333">.</span><span style="color: #0000CC">forward</span><span style="color: #333333">(</span>request<span style="color: #333333">,</span> response<span style="color: #333333">);</span>
+        <span style="color: #333333">}</span>
+    <span style="color: #333333">}</span>
+
+    <span style="color: #888888">/**</span>
+<span style="color: #888888">     * Returns a short description of the servlet.</span>
+<span style="color: #888888">     *</span>
+<span style="color: #888888">     * @return a String containing servlet description</span>
+<span style="color: #888888">     */</span>
+    <span style="color: #555555; font-weight: bold">@Override</span>
+    <span style="color: #008800; font-weight: bold">public</span> String <span style="color: #0066BB; font-weight: bold">getServletInfo</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+        <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&quot;Short description&quot;</span><span style="color: #333333">;</span>
+    <span style="color: #333333">}</span><span style="color: #888888">// &lt;/editor-fold&gt;</span>
+
+<span style="color: #333333">}</span>
+</pre></div>
+
+        </div>
+ 

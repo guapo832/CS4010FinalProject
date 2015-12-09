@@ -8,6 +8,7 @@
 
 <jsp:include page="includes/TopHtml.jsp">
     <jsp:param name="Title" value="Add Recipe"></jsp:param>
+    <jsp:param name="SourcePrefix" value="CreateRecipe"></jsp:param>
 </jsp:include>
 <div class="container">
 Server Version: <%= application.getServerInfo() %><br>

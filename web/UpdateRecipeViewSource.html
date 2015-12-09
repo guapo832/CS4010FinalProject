@@ -1,0 +1,60 @@
+ <div>
+            <div>
+                <h2>Update Recipe View</h2>
+                This is the presentation portion of creating an Ingredient.
+                <ol>
+                    <li>When the form is first loaded, the doGet method is called and passes control to this jsp file rendering the form</a>.</li>
+                    <li>When the form is submitted the doPost method is called and the model is updated from the form data and the database is updated.</li>
+                </ol>
+                
+                
+            </div>
+            <div style="overflow:scroll;margin-right:auto;margin-left:auto;width:75%;height:500px">
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">&lt;%-</span><span style="color: #333333">-</span> 
+    Document   <span style="color: #333333">:</span> editRecipe
+    Created on <span style="color: #333333">:</span> Oct <span style="color: #0000DD; font-weight: bold">11</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">2015</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">6</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">41</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">40</span> AM
+    Author     <span style="color: #333333">:</span> gyerby
+<span style="color: #333333">--</span><span style="color: #008800; font-weight: bold">%&gt;</span>
+
+<span style="color: #008800; font-weight: bold">&lt;%@</span>page contentType<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;text/html&quot;</span> pageEncoding<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;UTF-8&quot;</span><span style="color: #008800; font-weight: bold">%&gt;</span>
+<span style="color: #008800; font-weight: bold">&lt;%@</span> taglib uri<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> prefix<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;c&quot;</span> <span style="color: #008800; font-weight: bold">%&gt;</span>
+
+
+<span style="color: #008800; font-weight: bold">&lt;jsp:include page=&quot;includes/TopHtml.jsp&quot;&gt;</span>
+    <span style="color: #007700">&lt;jsp:param</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;Title&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;Edit Recipe ${Recipe.title}&quot;</span><span style="color: #007700">&gt;&lt;/jsp:param&gt;</span>
+    <span style="color: #007700">&lt;jsp:param</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;SourcePrefix&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;UpdateRecipe&quot;</span><span style="color: #007700">&gt;&lt;/jsp:param&gt;</span>
+<span style="color: #008800; font-weight: bold">&lt;/jsp:include&gt;</span>
+        <span style="color: #007700">&lt;h1&gt;</span>Edit Recipe<span style="color: #007700">&lt;/h1&gt;</span>
+        <span style="color: #007700">&lt;form</span> <span style="color: #0000CC">action=</span><span style="background-color: #fff0f0">&quot;</span><span style="color: #008800; font-weight: bold">&lt;%=</span> response<span style="color: #333333">.</span><span style="color: #0000CC">encodeRedirectURL</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;updateRecipe.do&quot;</span><span style="color: #333333">)</span> <span style="color: #008800; font-weight: bold">%&gt;</span><span style="background-color: #fff0f0">&quot;</span> <span style="color: #0000CC">method=</span><span style="background-color: #fff0f0">&quot;POST&quot;</span><span style="color: #007700">&gt;</span>
+           
+                    <span style="color: #007700">&lt;input</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;hidden&quot;</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;ID&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;${Recipe.id}&quot;</span><span style="color: #007700">/&gt;</span>
+            <span style="color: #007700">&lt;label&gt;</span>Title: <span style="color: #007700">&lt;/label&gt;</span>
+            <span style="color: #007700">&lt;input</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;text&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;${Recipe.title}&quot;</span> <span style="color: #0000CC">required=</span><span style="background-color: #fff0f0">&quot;true&quot;</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;Title&quot;</span> <span style="color: #0000CC">id=</span><span style="background-color: #fff0f0">&quot;Title&quot;</span><span style="color: #007700">/&gt;&lt;br</span> <span style="color: #007700">/&gt;</span>
+            
+            <span style="color: #007700">&lt;label&gt;</span>Author: <span style="color: #007700">&lt;/label&gt;</span>
+            <span style="color: #007700">&lt;input</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;text&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;${Recipe.author}&quot;</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;Author&quot;</span> <span style="color: #0000CC">required=</span><span style="background-color: #fff0f0">&quot;true&quot;</span> <span style="color: #0000CC">id=</span><span style="background-color: #fff0f0">&quot;Author&quot;</span><span style="color: #007700">/&gt;&lt;br</span> <span style="color: #007700">/&gt;</span>
+            
+            <span style="color: #007700">&lt;label&gt;</span>Short Description: <span style="color: #007700">&lt;/label&gt;</span>
+            <span style="color: #007700">&lt;input</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;text&quot;</span> <span style="color: #0000CC">required=</span><span style="background-color: #fff0f0">&quot;true&quot;</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;ShortDescription&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;${Recipe.shortDescription}&quot;</span> <span style="color: #0000CC">id=</span><span style="background-color: #fff0f0">&quot;ShortDescription&quot;</span><span style="color: #007700">/&gt;&lt;br/&gt;</span>
+            
+             <span style="color: #007700">&lt;label&gt;</span>Prep Time<span style="color: #007700">&lt;/label&gt;</span>
+            <span style="color: #007700">&lt;input</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;number&quot;</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;PrepTime&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;${Recipe.prepTime}&quot;</span> <span style="color: #0000CC">requied=</span><span style="background-color: #fff0f0">&quot;true&quot;</span> <span style="color: #0000CC">id=</span><span style="background-color: #fff0f0">&quot;PrepTime&quot;</span><span style="color: #007700">/&gt;&lt;br/&gt;</span>
+             <span style="color: #007700">&lt;label&gt;</span>Cook Time<span style="color: #007700">&lt;/label&gt;</span>
+            <span style="color: #007700">&lt;input</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;number&quot;</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;CookTime&quot;</span> <span style="color: #0000CC">required=</span><span style="background-color: #fff0f0">&quot;true&quot;</span> <span style="color: #0000CC">id=</span><span style="background-color: #fff0f0">&quot;CookTime&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;${Recipe.cookTime}&quot;</span><span style="color: #007700">/&gt;&lt;br/&gt;</span>
+            
+            <span style="color: #007700">&lt;label&gt;</span>Yield<span style="color: #007700">&lt;/label&gt;</span>
+            <span style="color: #007700">&lt;input</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;text&quot;</span> <span style="color: #0000CC">required=</span><span style="background-color: #fff0f0">&quot;true&quot;</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;Yield&quot;</span> <span style="color: #0000CC">id=</span><span style="background-color: #fff0f0">&quot;Yield&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;${Recipe.yield}&quot;</span> <span style="color: #007700">/&gt;&lt;br/&gt;</span>
+            
+            <span style="color: #007700">&lt;label&gt;</span>Skill Level<span style="color: #007700">&lt;/label&gt;</span>
+            <span style="color: #007700">&lt;input</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;text&quot;</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;SkillLevel&quot;</span> <span style="color: #0000CC">id=</span><span style="background-color: #fff0f0">&quot;SkillLevel&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;${Recipe.skillLevel}&quot;</span> <span style="color: #0000CC">required=</span><span style="background-color: #fff0f0">&quot;true&quot;</span><span style="color: #007700">/&gt;&lt;br/&gt;</span>
+            
+            <span style="color: #007700">&lt;label&gt;</span>Instructions: <span style="color: #007700">&lt;/label&gt;&lt;br</span> <span style="color: #007700">/&gt;</span>
+            <span style="color: #007700">&lt;textarea</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;Instructions&quot;</span> <span style="color: #0000CC">required=</span><span style="background-color: #fff0f0">&quot;true&quot;</span> <span style="color: #0000CC">id=</span><span style="background-color: #fff0f0">&quot;Instructions&quot;</span> <span style="color: #0000CC">required=</span><span style="background-color: #fff0f0">&quot;true&quot;</span> <span style="color: #0000CC">rows=</span><span style="background-color: #fff0f0">&quot;10&quot;</span> <span style="color: #0000CC">cols=</span><span style="background-color: #fff0f0">&quot;35&quot;</span><span style="color: #007700">&gt;&lt;c:out</span> <span style="color: #0000CC">escapeXml=</span><span style="background-color: #fff0f0">&quot;true&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;${Recipe.instructions}&quot;</span> <span style="color: #007700">/&gt;&lt;/textarea&gt;</span>
+                   
+            <span style="color: #007700">&lt;button&gt;</span>Submit<span style="color: #007700">&lt;/button&gt;</span>
+            
+        <span style="color: #007700">&lt;/form&gt;</span>
+           <span style="color: #008800; font-weight: bold">&lt;jsp:include page=&quot;includes/BottomHtml.jsp&quot;&gt;&lt;/jsp:include&gt;</span>
+</pre></div>
+
+            </div>

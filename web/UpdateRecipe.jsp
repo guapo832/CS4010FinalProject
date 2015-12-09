@@ -10,6 +10,7 @@
 
 <jsp:include page="includes/TopHtml.jsp">
     <jsp:param name="Title" value="Edit Recipe ${Recipe.title}"></jsp:param>
+    <jsp:param name="SourcePrefix" value="UpdateRecipe"></jsp:param>
 </jsp:include>
         <h1>Edit Recipe</h1>
         <form action="<%= response.encodeRedirectURL("updateRecipe.do") %>" method="POST">

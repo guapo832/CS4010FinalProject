@@ -12,6 +12,7 @@
 
 <jsp:include page="includes/TopHtml.jsp">
      <jsp:param name="Title" value="Recipes"></jsp:param>
+     <jsp:param name="SourcePrefix" value="RecipeList"></jsp:param>
 </jsp:include>
 <div class="container">
   <div style="width:auto;text-align:right">Hello <%= ((User)request.getSession().getAttribute("CurrentUser")).getUsername() %><br /></div>

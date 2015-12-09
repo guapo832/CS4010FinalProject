@@ -6,13 +6,12 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" import="models.User"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Signin</title>
-    </head>
-    <body>
+<jsp:include page="includes/TopHtml.jsp">
+    <jsp:param name="Title" value="Sign In"></jsp:param>
+   <jsp:param name="SourcePrefix" value="SignIn"></jsp:param>
+</jsp:include>
+<div class="container-fluid">
+
         <h1>Sign in</h1>
         <c:if test="${requestScope.Error!=null}">
             <h2 style="color:red"><c:out value="${requestScope.Error}"></c:out></h2>
@@ -30,5 +29,6 @@
             
         </form>
             <a href="SignUp.do">sign up</a>
-    </body>
-</html>
+
+</div>
+<jsp:include page="includes/BottomHtml.jsp"></jsp:include>

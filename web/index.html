@@ -28,7 +28,9 @@ and open the template in the editor.
     </head>
     <body>
         
-        <div class="container-fluid">
+    <center>
+        <Button onclick="window.open('Index.do')" class="btn btn-info btn-lg">Open Application</button>
+    </center>
             <div class="h1">Gary Yerby Recipe Manager</div>
         <div class="h2">CS4010 Final Project</div>
           <h3>Introduction</h3>
@@ -42,14 +44,54 @@ and open the template in the editor.
           <p>Recipes consist of Ingredients and other metadata such as instructions, yield, author etc. Each User can contain one or more Recipes. Each Recipe contains one or more Ingredients.</p>
           <p>Source code can be found in <a href="http://www.github.com/guapo832/cs4010finalproject" target='_blank'>My Github repository</a> or in my tomcat folder on Hoare.
               On Each Webpage you'll have the option to view the various code components that make up the functionality of that web page.
-              <Button onclick="window.open('Index.do')" class="btn btn-info btn-lg">Open Application</button>
+              
           </p>
+          
+          <div class="h3">Models</div>
           <p>
-              Below is a class diagram (UML) of the code that I used for this application.
+              The Models used are the business layer of the application. This will handle any business logic that must be incorporated. I did not put in any validation, 
+              but this is a good place for validation to live. I also separated the data layer from the model, but the data layer should also reside in the model environment. Below is a diagram of the model layer.
+              The Controller will build a model using one of the following beans, and pass that information either to the view for display, or to the Database for storage.
+              The Model consist of bean type classes.
+              
           </p>
-          <img src="images/uml.bmp"/>
-           
-        </div>
+              <img src="images/Models.png"/>       
+              <div class="h3">Controllers</div>
+        <p>
+            The Controller handles all of the logistics for the application.  There is one controller for each operation within each of the models. The Controllers are servlets. The controller will
+            retreive data from the database and build a model and pass that model a view. Or ther controller will get data from a view, build a model and pass that model to a database operation for storage.<br/>
+            <strong>Create</strong><br />
+        <ul>
+            <li>the doGet of the Create controller will pass control to a create form view.<br /></li>
+            <li>the doPost of the Create controller will take the submitted data, build a model and pass that model to a database create operation. It then redirects to a read view</li>
+        </ul>
+            
+            <strong>Read</strong><br/>
+            <ul><li>The doGet retrieves data from the database, builds a model, then passes that model to a view that displays the data</li></ul>
+            <ul><li>The doPost is not needed in a Read operation for this application</li></ul>    
+            <strong>Update</strong><br />
+            <ul><li>The doGet retreives stored data and builds a model. It then passes that model to an update form view which then fills out the form fields with the data </li>
+                <li>The doPost takes the submitted data and builds a model. It then passes that model to a database update operation and then redirects to a Read View.</li></ul>
+            
+            <strong>Delete</strong><br />
+            The delete controller calls a database operation of to delete the corresponding data then forwards to a summary view.
+            
+            <img src="images/Controllers.png"/>
+        </p>
+        
+        <div class="h3">Views</div><br/>
+        <p>views are the display portion of the MVC design pattern, The consist of jsp pages that merely are a display medium. The data is retrieved from the controller and displayed using 
+            Standard core server tag libraries and html.
+            there is a JSP page for each operation for each model. 
+            
+            <strong>Operation Views</strong>
+            
+        <ul><li>Create</li><li>Read</li><li>Update</li><li>Delete</li></ul>
+        <div class="h3">
+            Utilities
+        </div>   
+        <p>I am keeping database operations, String encoding, Fileupload helper utilities, and Membership utilities here.</p>
+        <img src="images/Utilities.png"/>
     </body>
 </html>
 

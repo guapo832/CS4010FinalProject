@@ -11,7 +11,7 @@
    <jsp:param name="SourcePrefix" value="SignUp"></jsp:param>
 </jsp:include>
 <div class="container-fluid">
-      
+    <h1>Sign Up</h1>
         <c:if test="${requestScope.Error!=null}">
             <h2 style="color:red"><c:out value="${requestScope.Error}"></c:out></h2>
         

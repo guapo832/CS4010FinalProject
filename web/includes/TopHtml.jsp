@@ -122,12 +122,13 @@
         </div>      
         
         
-        <div style="width:auto;text-align:right">
-            <button type="button" id="btnModelSource" style="visible:none" class="btn btn-info btn-lg" data-toggle="modal" data-target="#ModelModal">See Model Source</button>&nbsp;
-            <button type="button" id="btnViewSource" style="visible:none" class="btn btn-info btn-lg" data-toggle="modal" data-target="#ViewModal">See View Source</button>&nbsp;
-            <button type="button" id="btnControllerSource" style="visible:none" class="btn btn-info btn-lg" data-toggle="modal" data-target="#ControllerModal">See Controller Source</button>&nbsp;
+        <div style="width:auto;text-align:center;margin-bottom:15px;margin-top:10px">
+            <button type="button" id="btnModelSource" style="visible:none" class="btn btn-info btn-lg" data-toggle="modal" data-target="#ModelModal">See Source Code For Model</button>&nbsp;
+            <button type="button" id="btnViewSource" style="visible:none" class="btn btn-info btn-lg" data-toggle="modal" data-target="#ViewModal">See Source Code For View</button>&nbsp;
+            <button type="button" id="btnControllerSource" style="visible:none" class="btn btn-info btn-lg" data-toggle="modal" data-target="#ControllerModal">See Source Code For Controller</button>&nbsp;
         </div>
-        <div style="text-align:right;width:640px">
+        <div class="container-fluid">
+        
             <a href="<%= response.encodeRedirectURL("Index.do")%>">Home</a> | <a href="<%= response.encodeRedirectURL("MyRecipes.do")%>">My Recipes</a> |
   <c:if test="${sessionScope.CurrentUser != null}">
      <a href="signout.do">sign out</a>
@@ -136,6 +137,6 @@
     <a href="SignUp.do">Sign Up</a> 
   </c:if>
         </div>  
-        <div class="maincontent" style="width:auto">
+        <div class="container-fluid" style="width:auto">
             
  
